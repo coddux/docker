@@ -1,0 +1,8 @@
+# Créer un swarm local où la machine virtuelle Char en est le manager.
+
+docker swarm init --advertise-addr $(docker-machine ip Char)
+
+# RESULT:
+# docker swarm join --token SWMTKN-1-477nb3igf33goouzvnboipp4w9ddf9rfjucq7j8da8bjv5jbwb-2g2n1vqadcyv3cvroywcjgcum 192.168.99.100:2377
+
+# VALIDATE: docker network ls

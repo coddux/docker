@@ -1,0 +1,6 @@
+# Créer un volume hatchery
+
+docker volume create hatchery
+
+
+# VALIDATE: docker volume ls

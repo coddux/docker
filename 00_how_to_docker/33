@@ -1,0 +1,3 @@
+# Supprimer l’ensemble des images de containers stocké sur la machine virtuelle Char, en une seule commande
+
+docker rmi $(docker images -aq)

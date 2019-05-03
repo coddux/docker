@@ -1,0 +1,5 @@
+# Récupérer l’adresse IP interne du container overlord sans lancer son shell et en une commande
+
+docker inspect -f "{{ .NetworkSettings.Networks.bridge.IPAddress }}" overlord
+
+# RESULT: 172.17.0.2

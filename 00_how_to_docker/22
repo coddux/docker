@@ -1,0 +1,9 @@
+# Basculer Aiur comme esclave du swarm local où Char est leader
+# (La commande de prise de contrôle de Aiur n’est pas demandée).
+
+# docker-machine ssh Aiur
+
+docker swarm join --token SWMTKN-1-477nb3igf33goouzvnboipp4w9ddf9rfjucq7j8da8bjv5jbwb-2g2n1vqadcyv3cvroywcjgcum 192.168.99.100:2377
+
+# RESULT:
+# This node joined a swarm as a worker.

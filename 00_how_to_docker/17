@@ -1,0 +1,3 @@
+# Afficher l’ensemble des containers actuellement actifs sur la machine virtuelle Char.
+
+docker ps

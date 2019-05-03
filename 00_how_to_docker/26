@@ -1,0 +1,11 @@
+# Lancer un service 42school/engineering-bay en 2 répliques
+# faire en sorte que le service fonctionne (se référer à la doc fournie dans hub.docker.com).
+# Ce service s’appellera engineering-bay et sera sur le reseau overmind
+
+docker service create -d --name engineering-bay --network overmind -e OC_USERNAME=rabuser -e OC_PASSWD=rabpass --replicas 2 42school/engineering-bay
+
+# VALIDATE:
+# docker service ls
+
+# REFERENCES:
+# How to use: https://hub.docker.com/r/42school/engineering-bay

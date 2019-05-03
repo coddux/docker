@@ -1,0 +1,3 @@
+# Forcer l’arrêt et supprimer l’ensemble des containers (tous états confondus), en une seule commande.
+
+docker container rm --force $(docker container ls -aq)

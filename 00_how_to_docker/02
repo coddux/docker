@@ -1,0 +1,6 @@
+# Récupérer l’adresse IP de la machine virtuelle Char
+
+docker-machine ip Char
+
+
+# RESULT: 192.168.99.100

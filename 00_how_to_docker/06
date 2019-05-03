@@ -1,0 +1,12 @@
+# Lancer un container nginx disponible sur le Docker Hub en tâche de fond.
+# Le container lancé doit avoir pour nom overlord,
+# doit pouvoir redémarrer de lui même et doit avoir le port 80 du container rattaché au port 5000 de Char.
+# vérifier le fonctionnement du container: http://<ip-de-char>:5000 comme URL sur votre navigateur internet.
+
+docker run --name overlord -d -p 5000:80 --restart always nginx
+
+
+# VALIDATE:
+# docker image ls
+# docker container ps -a
+# docker exec -it overlord /bin/sh

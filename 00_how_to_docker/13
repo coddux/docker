@@ -1,0 +1,15 @@
+# Afficher les variables d’environnement du container spawning-pool en une seule commande, histoire d’être sûr que vous avez bien configuré votre container.
+
+docker exec spawning-pool env
+
+
+# RESULT :
+
+# PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# HOSTNAME=c7eab2bb948c
+# MYSQL_DATABASE=zerglings
+# MYSQL_ROOT_PASSWORD=Kerrigan
+# GOSU_VERSION=1.7
+# MYSQL_MAJOR=5.7
+# MYSQL_VERSION=5.7.25-1debian9
+# HOME=/root

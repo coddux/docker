@@ -1,0 +1,28 @@
+# Depuis le shell d’un container debian,
+# installer via le gestionnaire de paquets du container: de quoi compiler un code source en C et le pusher sur un repo git
+# (en veillant avant de mettre à jour le gestionnaire de paquets et les paquets présents de base dans le container).
+# Seules les commandes à effectuer dans le container sont demandées pour cet exercice.
+
+# docker run -it debian /bin/bash
+
+apt update
+apt dist-upgrade -y
+apt install -y build-essential git
+
+
+# VALIDATE:
+
+# cd /usr/local/src
+# apt install nano
+# nano test.c
+
+# #include <stdio.h>
+#
+# int	main()
+# {
+#	printf("la vie est belle !\n");
+#	return (0);
+# }
+
+# gcc test.c -o test
+# ./test

@@ -1,0 +1,5 @@
+# Récuperer les logs en continu d’une des tasks du service engineering-bay
+
+docker-machine ssh Char "docker service logs -f $(docker service ps engineering-bay -f "name=engineering-bay.1" -q)"
+
+# all tasks of engineering-bay: docker service logs -f engineering-bay | grep engineering-bay.1
