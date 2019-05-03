@@ -8,7 +8,7 @@ RUN apt-get update \
        ca-certificates curl openssh-server postfix
 
 # download & install Gitlab CE
-RUN EXTERNAL_URL="https://gitlab.example.com"
+#RUN EXTERNAL_URL="https://gitlab.example.com"
 RUN curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash
 RUN apt-get update && apt-get -y install --no-install-recommends gitlab-ce \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -25,6 +25,11 @@ RUN openssl x509 -req -days 365 -in "/etc/gitlab/ssl/gitlab.example.com.pem" -si
 RUN sed -i -e "s~external_url 'http://gitlab.example.com'~external_url 'https://gitlab.example.com'~g" /etc/gitlab/gitlab.rb
 RUN sed -i -e "s/# nginx\['redirect_http_to_https'\] = false/nginx\['redirect_http_to_https'\] = true/g" /etc/gitlab/gitlab.rb
 RUN sed -i -e "s/# nginx\['redirect_http_to_https_port/nginx\['redirect_http_to_https_port/g" /etc/gitlab/gitlab.rb
+
+# configure ssh
+RUN cp /etc/ssh/ssh_host* /etc/gitlab
+RUN sed -i -e "s~#PasswordAuthentication yes~PasswordAuthentication no~g" /etc/ssh/sshd_config
+RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 # expose https & ssh
 EXPOSE 443 22
@@ -43,10 +48,19 @@ ENTRYPOINT (/opt/gitlab/embedded/bin/runsvdir-start&EXTERNAL_URL="localhost") &&
 # VALIDATE:
 # bash : docker exec -it gitlab101 /bin/bash
 # https: https://0.0.0.0:8443
-# ssh  : ssh -T git@0.0.0.0 -p 8022 (see setup & config here after) --> result "Welcome to GitLab, @root!"
-#  cat ~/.ssh/id_rsa.pub
-#  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxOkuhgmb/XYn3RFW/TW68hsEokBNs02ouz4uUbDiQZDZ9sAgLgvuW0AaOB8o+LU0woSgST/SX3jCJ6ramXtGNEaUvdfelfdqktU+5/Nn2DCGwu79h0EyZRO9kbsgjH61py3BmlvJBFCvtSHzCF7jH4nymxLwK3EjRQnDqCm1tUjI02wahs47JOSeOrNXMAxoJSw5uGYxs9w96YzeR4TZEBu87HuR4lAXkPosUFNUVOhOrihpypvf3fb/nzVqUAixuErBbeCCRtwEdtUjTyr4Eal4YnzGj2DHfSEa9U5ZKkdOuOiquLSF8th8l6Z7+q9n9r1mMHt8UMUpt8zzUu2HP alepercq@z2r6p2.le-101.fr
-#  avatar -> settings -> ssh keys
+# git  :
+#   create git project "zoe" on gitlab-ce
+#   git clone https://0.0.0.0:8443/root/zoe.git
+# ssh  : 
+#   ssh key configuration:
+#     cat ~/.ssh/id_rsa.pub
+#     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxOkuhgmb/XYn3RFW/TW68hsEokBNs02ouz4uUbDiQZDZ9sAgLgvuW0AaOB8o+LU0woSgST/SX3jCJ6ramXtGNEaUvdfelfdqktU+5/Nn2DCGwu79h0EyZRO9kbsgjH61py3BmlvJBFCvtSHzCF7jH4nymxLwK3EjRQnDqCm1tUjI02wahs47JOSeOrNXMAxoJSw5uGYxs9w96YzeR4TZEBu87HuR4lAXkPosUFNUVOhOrihpypvf3fb/nzVqUAixuErBbeCCRtwEdtUjTyr4Eal4YnzGj2DHfSEa9U5ZKkdOuOiquLSF8th8l6Z7+q9n9r1mMHt8UMUpt8zzUu2HP alepercq@z2r6p2.le-101.fr
+#     avatar -> settings -> ssh keys
+#   ssh git
+#     ssh -T git@0.0.0.0 -p 8022 --> result "Welcome to GitLab, @root!"
+#     create git project "oze" on gitlab-ce
+#     git clone ssh://git@0.0.0.0:8022/root/oze.git
+
 
 # REFERENCES:
 # [Gitlab Readme]         Omnibus GitLab: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md
