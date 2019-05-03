@@ -50,7 +50,7 @@ ENTRYPOINT (/opt/gitlab/embedded/bin/runsvdir-start&EXTERNAL_URL="localhost") &&
 
 # REFERENCES:
 # [Gitlab Readme]         Omnibus GitLab: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md
-# [last release: 11.10.3] gitlab-ce release: https://gitlab.com/gitlab-org/gitlab-ce/tags
+# [last release: 11.10.4] gitlab-ce release: https://gitlab.com/gitlab-org/gitlab-ce/tags
 # [last debian package]   gitlab-ce package: https://packages.gitlab.com/gitlab/gitlab-ce/
 # [file system read-only] configuration fails, sysctl key is read-only: https://gitlab.com/gitlab-org/omnibus-gitlab/issues/893
 # [nginx https]           NGINX settings: https://docs.gitlab.com/omnibus/settings/nginx.html
