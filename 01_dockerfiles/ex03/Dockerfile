@@ -60,7 +60,6 @@ ENTRYPOINT (/opt/gitlab/embedded/bin/runsvdir-start&EXTERNAL_URL="localhost") &&
 #     create git project "oze" on gitlab-ce
 #     git clone ssh://git@0.0.0.0:8022/root/oze.git
 
-
 # REFERENCES:
 # [Gitlab Readme]         Omnibus GitLab: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md
 # [last release: 11.10.4] gitlab-ce release: https://gitlab.com/gitlab-org/gitlab-ce/tags
