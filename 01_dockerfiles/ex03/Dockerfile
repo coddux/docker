@@ -54,7 +54,6 @@ ENTRYPOINT (/opt/gitlab/embedded/bin/runsvdir-start&EXTERNAL_URL="localhost") &&
 # ssh  : 
 #   ssh key configuration:
 #     cat ~/.ssh/id_rsa.pub
-#     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxOkuhgmb/XYn3RFW/TW68hsEokBNs02ouz4uUbDiQZDZ9sAgLgvuW0AaOB8o+LU0woSgST/SX3jCJ6ramXtGNEaUvdfelfdqktU+5/Nn2DCGwu79h0EyZRO9kbsgjH61py3BmlvJBFCvtSHzCF7jH4nymxLwK3EjRQnDqCm1tUjI02wahs47JOSeOrNXMAxoJSw5uGYxs9w96YzeR4TZEBu87HuR4lAXkPosUFNUVOhOrihpypvf3fb/nzVqUAixuErBbeCCRtwEdtUjTyr4Eal4YnzGj2DHfSEa9U5ZKkdOuOiquLSF8th8l6Z7+q9n9r1mMHt8UMUpt8zzUu2HP alepercq@z2r6p2.le-101.fr
 #     avatar -> settings -> ssh keys
 #   ssh git
 #     ssh -T git@0.0.0.0 -p 8022 --> result "Welcome to GitLab, @root!"
